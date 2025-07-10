@@ -144,6 +144,46 @@ class Model:
    #
    #      return lp
 
+
+# # PARTE 2
+# def getBFSNodesFromTree(self, sorgente):
+#     tree = nx.bfs_tree(self._grafo, sorgente)
+#     archi = list(tree.edges())
+#     nodi = list(tree.nodes())
+#     # ESCLUSO IL PRIMO SORGENTE
+#     return nodi[1:]
+#
+#
+# def getDFSNodesFromTree(self, sorgente):
+#     tree = nx.dfs_tree(self._grafo, sorgente)
+#     archi = list(tree.edges())
+#     nodi = list(tree.nodes())
+#     return nodi[1:]
+#
+#
+# def getCammino(self, sorgenteStr):
+#     sorgente = self.mappaOrdineId[sorgenteStr]
+#     longestPath = []
+#
+#     tree = nx.dfs_tree(self._grafo, sorgente)
+#     nodi = list(tree.nodes())
+#     for nodo in nodi:
+#         temporaneo = [nodo]
+#         # LA PRIMA ITERAZIONE SARA FASA OVVIAMENTE E RITORNA NEL FOR
+#
+#         while temporaneo[0] != sorgente:
+#             # è una lista "predecessore"
+#             listaPredecessori = nx.predecessor(tree, sorgente, temporaneo[0])
+#             temporaneo.insert(0, listaPredecessori[0])
+#
+#             if len(temporaneo) > len(longestPath):
+#                 # viene usata per salvare il cammino tmp più lungo trovato finora,
+#                 # in modo sicuro, senza rischiare che lp venga modificato accidentalmente in seguito.
+#                 longestPath = copy.deepcopy(temporaneo)
+#
+#     return longestPath
+
+
 if __name__ == "__main__":
     model = Model()
 
