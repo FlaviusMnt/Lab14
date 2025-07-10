@@ -76,39 +76,40 @@ class Model:
 
 
     # def getBestPath(self, startStr):
-    #     self._bestPath = []
-    #     self._bestScore = 0
+    #     self._bestPath = []  # cammino migliore trovato finora
+    #     self._bestScore = 0 # punteggio (somma dei pesi) del cammino migliore
     #
-    #     start = self._idMap[int(startStr)]
+    #     start = self._idMap[int(startStr)]  # converte l'ID da stringa a nodo vero e proprio
     #
-    #     parziale = [start]
+    #     parziale = [start] # cammino attuale in costruzione
     #
-    #     vicini = self._graph.neighbors(start)
+    #     vicini = self._graph.neighbors(start) # vicini del nodo iniziale
     #     for v in vicini:
     #         parziale.append(v)
-    #         self._ricorsione(parziale)
-    #         parziale.pop()
+    #         self._ricorsione(parziale) # avvia la ricorsione
+    #         parziale.pop() # backtracking
     #
     #     return self._bestPath, self._bestScore
+
     # def _ricorsione(self, parziale):
-    #     if self.getScore(parziale) > self._bestScore:
-    #         self._bestScore = self.getScore(parziale)
-    #         self._bestPath = copy.deepcopy(parziale)
+    #     if self.getScore(parziale) > self._bestScore:  # *** Se il punteggio attuale è migliore del migliore trovato finora
+    #         self._bestScore = self.getScore(parziale)  # *** Aggiorna il punteggio migliore
+    #         self._bestPath = copy.deepcopy(parziale)   # *** Salva una copia del cammino migliore (deepcopy evita modifiche future)
     #
-    #     for v in self._graph.neighbors(parziale[-1]):
-    #         if (v not in parziale and #check if not in parziale
-    #                 self._graph[parziale[-2]][parziale[-1]]["weight"] >
-    #                 self._graph[parziale[-1]][v]["weight"]): #check if peso nuovo arco è minore del precedente
-    #             parziale.append(v)
-    #             self._ricorsione(parziale)
-    #             parziale.pop()
+    #     for v in self._graph.neighbors(parziale[-1]):   # *** Per ogni vicino del nodo corrente (ultimo nel cammino)
+    #         if (v not in parziale and #check if not in parziale   # *** Se il vicino non è già nel cammino (per evitare cicli)
+    #                 self._graph[parziale[-2]][parziale[-1]]["weight"] >   # *** E se il peso dell'arco precedente è maggiore di quello nuovo
+    #                 self._graph[parziale[-1]][v]["weight"]): #check if peso nuovo arco è minore del precedente # *** (cioè: il peso decresce lungo il cammino)
+    #             parziale.append(v)   # *** Aggiunge il nodo al cammino attuale
+    #             self._ricorsione(parziale)  # *** Chiama ricorsivamente per continuare l’esplorazione
+    #             parziale.pop()  # *** Backtracking: rimuove l’ultimo nodo per provare altri percorsi
     #
     # def getScore(self, listOfNodes):
-    #     tot = 0
-    #     for i in range(len(listOfNodes) - 1):
-    #         tot += self._graph[listOfNodes[i]][listOfNodes[i + 1]]["weight"]
+    #     tot = 0  # *** Inizializza il punteggio totale a zero
+    #     for i in range(len(listOfNodes) - 1):  # *** Scorre ogni coppia di nodi consecutivi nel cammino
+    #         tot += self._graph[listOfNodes[i]][listOfNodes[i + 1]]["weight"]  # *** Aggiunge il peso dell’arco tra i due nodi
     #
-    #     return tot
+    #     return tot  # *** Restituisce il punteggio totale del cammino
 
 
 
